@@ -2,7 +2,6 @@ package com.example.sql_demo.controller;
 
 
 import com.example.sql_demo.entity.Luntan;
-import com.example.sql_demo.service.LuntanService;
 import com.example.sql_demo.service.impl.LuntanServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,5 +34,10 @@ public class LuntanController {
     @RequestMapping("delete/{id}")
     public void deleteLuntan(@PathVariable("id") Integer id){
         luntanService.deleteLuntan(id);
+    }
+
+    @RequestMapping("update/{id}/{title}/{content}")
+    public void updateLuntan(@PathVariable("id") Integer id,@PathVariable("title") String title,@PathVariable("content") String content){
+        luntanService.updateLuntan(new Luntan(id,title,content));
     }
 }

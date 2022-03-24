@@ -10,6 +10,12 @@ public class Luntan {
         this.content = content;
     }
 
+    public Luntan( Integer id,String title, String content) {
+        this.title = title;
+        this.id = id;
+        this.content = content;
+    }
+
     @Override
     public String toString() {
         return "Luntan{" +
