@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.sql_demo.mapper.LuntanMapper">
+    <resultMap id="BaseResultMap" type="com.example.sql_demo.entity.Luntan">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertLuntan" parameterType="com.example.sql_demo.entity.Luntan">
+        insert into table_luntan(id, title, content)
+        VALUES (#{id,jdbcType=INTEGER},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR})
+    </insert>
+
+    <delete id="deleteLuntan" parameterType="integer">
+        delete from table_luntan where id=#{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateLuntan" parameterType="com.example.sql_demo.entity.Luntan">
+        update table_luntan set title=#{title,jdbcType=VARCHAR},content=#{content,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findById" parameterType="integer" resultMap="BaseResultMap">
+        select * from table_luntan where id=#{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from table_luntan
+    </select>
+</mapper>

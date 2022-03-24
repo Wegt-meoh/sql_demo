@@ -1,0 +1,26 @@
+#服务启动端口
+server :
+  port :  8080
+
+#数据库配置
+spring:
+  profiles:
+    active: druid
+
+# Mybatis mapper 映射路径配置
+mybatis:
+  type-aliases-package: com.example.sql_demo.mapper
+  mapper-locations: classpath*:mapper/*Mapper.xml
+
+
+# 日志输出
+logging:
+  file: /Users/quepengbiao/logs
+  level:
+    com.example.sql_demo: debug
+    org.springframework: warn
+
+task:
+  cron: 0 0/5 * * * ?
+
+
