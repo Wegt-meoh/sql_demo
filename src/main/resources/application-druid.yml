@@ -6,9 +6,9 @@ spring:
     druid:
       # 主库数据源
 #      master:
-      url: jdbc:mysql://121.196.246.85:3306/test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-      username: lasting
-      password: 6iC0pjOJgJpSyOpDLU9mb0g1ZgPRaBYXOFl7ikSufAE=
+      url: jdbc:mysql://localhost:8080/test?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+      username: root
+      password: root
       # 从库数据源ﬁ
 #      slave:
 #        # 从数据源开关/默认关闭
