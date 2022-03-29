@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.sql_demo.mapper.BookMapper">
+    <resultMap id="BaseResultMap" type="com.example.sql_demo.entity.Book">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="book-name" property="bookName" jdbcType="VARCHAR"/>
+        <result column="book-desc" property="bookDesc" jdbcType="VARCHAR"/>
+        <result column="book-price" property="bookPrice" jdbcType="FLOAT"/>
+        <result column="book-reserve" property="bookReserve" jdbcType="INTEGER"/>
+        <result column="book-author" property="bookAuthor" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <insert id="insertBook" parameterType="com.example.sql_demo.entity.Book">
+        insert into table_book_store(id, `book-name`, `book-desc`,`book-price`,`book-reserve`,`book-author`)
+        VALUES (#{id,jdbcType=INTEGER},#{bookName,jdbcType=VARCHAR},#{bookDesc,jdbcType=VARCHAR},
+                #{bookPrice,jdbcType=FLOAT},#{bookReserve,jdbcType=INTEGER},#{bookAuthor,jdbcType=VARCHAR})
+    </insert>
+
+    <delete id="deleteBook" parameterType="integer">
+        delete from table_book_store where id=#{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="updateBook" parameterType="com.example.sql_demo.entity.Book">
+        update table_book_store set `book-name`=#{bookName,jdbcType=VARCHAR},`book-desc`=#{bookDesc,jdbcType=VARCHAR},
+        `book-price`=#{bookPrice,jdbcType=FLOAT},`book-reserve`=#{bookReserve,jdbcType=INTEGER},`book-author`=#{bookAuthor,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findById" parameterType="integer" resultMap="BaseResultMap">
+        select * from table_book_store where id=#{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from table_book_store
+    </select>
+</mapper>
